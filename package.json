@@ -1,10 +1,11 @@
 {
   "name": "eslint-config-tonyfromundefined",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "commonjs",
   "main": "./dist/index.js",
   "files": [
-    "index.js"
+    "index.js",
+    ".eslintrc.js"
   ],
   "scripts": {
     "build": "echo \"build\""
