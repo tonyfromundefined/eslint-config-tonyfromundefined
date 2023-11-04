@@ -1,11 +1,9 @@
 {
   "name": "eslint-config-tonyfromundefined",
-  "private": true,
   "type": "commonjs",
   "main": "./dist/index.js",
   "files": [
-    "index.js",
-    "README.md"
+    "index.js"
   ],
   "scripts": {
     "build": "echo \"build\""
