@@ -1,4 +1,14 @@
 const { defineConfig } = require("eslint-define-config");
+const { camelCase, pascalCase } = require("change-case");
+const cssPropertyGroups = require("./cssPropertyGroups");
+
+const cssPropertyOrderInJs = cssPropertyGroups
+  .flatMap((val) => val.properties)
+  .map((val) =>
+    val.startsWith("-webkit-") || val.startsWith("-moz-")
+      ? pascalCase(val)
+      : camelCase(val),
+  );
 
 const prettierConfig = {
   arrowParens: "always",
@@ -8,6 +18,17 @@ const prettierConfig = {
   tabWidth: 2,
   useTabs: false,
 };
+
+const vanillaExtractConfig = defineConfig({
+  plugins: ["sort-keys-custom-order"],
+  rules: {
+    "perfectionist/sort-objects": "off",
+    "sort-keys-custom-order/object-keys": [
+      "error",
+      { orderedKeys: cssPropertyOrderInJs },
+    ],
+  },
+});
 
 /* eslint-disable perfectionist/sort-objects */
 module.exports = defineConfig({
@@ -21,9 +42,12 @@ module.exports = defineConfig({
   rules: {
     "prettier/prettier": ["error", prettierConfig, { usePrettierrc: false }],
   },
-  settings: {
-    "json/json-with-comments-files": [],
-  },
+  overrides: [
+    {
+      files: ["*.css.js", "*.css.ts"],
+      ...vanillaExtractConfig,
+    },
+  ],
   ignorePatterns: [
     // Yarn Packages
     ".yarn/**/*",

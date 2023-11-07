@@ -1,10 +1,11 @@
 {
   "name": "eslint-config-tonyfromundefined",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "commonjs",
   "main": "./dist/index.js",
   "files": [
     "index.js",
+    "cssPropertyGroups.js",
     ".eslintrc.js"
   ],
   "scripts": {
@@ -14,6 +15,7 @@
     "@types/react": "^18.2.34",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
+    "change-case": "4",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-react-app": "^7.0.1",
@@ -21,6 +23,7 @@
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-perfectionist": "^2.2.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-sort-keys-custom-order": "^1.0.5",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "typescript": "^5.2.2"
