@@ -41,6 +41,28 @@ module.exports = defineConfig({
   plugins: ["json-format", "prettier", "perfectionist"],
   rules: {
     "prettier/prettier": ["error", prettierConfig, { usePrettierrc: false }],
+    "perfectionist/sort-imports": [
+      "error",
+      {
+        groups: [
+          "side-effect",
+          "type",
+          ["builtin", "external"],
+          "internal-type",
+          "internal",
+          ["parent-type", "sibling-type", "index-type"],
+          ["parent", "sibling", "index"],
+          "object",
+          "unknown",
+        ],
+        "custom-groups": {
+          value: {},
+          type: {},
+        },
+        "newlines-between": "always",
+        "internal-pattern": ["~/**"],
+      },
+    ],
   },
   overrides: [
     {
