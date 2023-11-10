@@ -30,6 +30,10 @@ const vanillaExtractConfig = defineConfig({
   },
 });
 
+const packageJsonConfig = defineConfig({
+  plugins: ["json-format"],
+});
+
 /* eslint-disable perfectionist/sort-objects */
 module.exports = defineConfig({
   parser: "@typescript-eslint/parser",
@@ -38,7 +42,7 @@ module.exports = defineConfig({
     "prettier",
     "plugin:perfectionist/recommended-natural",
   ],
-  plugins: ["json-format", "prettier", "perfectionist"],
+  plugins: ["prettier", "perfectionist"],
   rules: {
     "prettier/prettier": ["error", prettierConfig, { usePrettierrc: false }],
     "perfectionist/sort-imports": [
@@ -60,7 +64,7 @@ module.exports = defineConfig({
           type: {},
         },
         "newlines-between": "always",
-        "internal-pattern": ["~/**"],
+        "internal-pattern": ["~/**", "@/**"],
       },
     ],
   },
@@ -69,12 +73,21 @@ module.exports = defineConfig({
       files: ["*.css.js", "*.css.ts"],
       ...vanillaExtractConfig,
     },
+    {
+      files: ["package.json", "**/package.json"],
+      ...packageJsonConfig,
+    },
   ],
   ignorePatterns: [
-    // Yarn Packages
+    // Packages
     ".yarn/**/*",
     ".pnp.cjs",
     ".pnp.loader.mjs",
+    "package-lock.json",
+
+    // Configuations
+    "tsconfig.json",
+    "**/tsconfig.json",
 
     // Build Artifacts
     "**/dist/**/*",
