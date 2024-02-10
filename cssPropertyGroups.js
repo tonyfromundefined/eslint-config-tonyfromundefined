@@ -419,7 +419,7 @@ const cssPropertyGroups = [
   },
   {
     // (Tony) Pseudo Selector
-    properties: [":hover", ":active", ":visited"],
+    properties: [":visited", ":hover", ":focus", ":active"],
   },
 ];
 

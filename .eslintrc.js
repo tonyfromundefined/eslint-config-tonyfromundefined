@@ -5,7 +5,9 @@ const cssPropertyGroups = require("./cssPropertyGroups");
 const cssPropertyOrderInJs = cssPropertyGroups
   .flatMap((val) => val.properties)
   .map((val) =>
-    val.startsWith("-webkit-") || val.startsWith("-moz-")
+    val.startsWith(":")
+      ? val
+      : val.startsWith("-webkit-") || val.startsWith("-moz-")
       ? pascalCase(val)
       : camelCase(val),
   );
