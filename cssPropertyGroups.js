@@ -417,6 +417,10 @@ const cssPropertyGroups = [
       "animation-direction",
     ],
   },
+  {
+    // (Tony) Pseudo Selector
+    properties: [":hover", ":active", ":visited"],
+  },
 ];
 
 module.exports = cssPropertyGroups;
