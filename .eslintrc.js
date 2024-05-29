@@ -69,12 +69,7 @@ module.exports = defineConfig({
         "internal-pattern": ["~/**", "@/**"],
       },
     ],
-    "perfectionist/sort-objects": [
-      "error",
-      {
-        "partition-by-comment": "Part:**",
-      },
-    ],
+    "perfectionist/sort-objects": "off",
   },
   overrides: [
     {
