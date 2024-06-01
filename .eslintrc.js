@@ -70,6 +70,7 @@ module.exports = defineConfig({
       },
     ],
     "perfectionist/sort-objects": "off",
+    "perfectionist/sort-object-types": "off",
   },
   overrides: [
     {
