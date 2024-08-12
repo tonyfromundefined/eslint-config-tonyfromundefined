@@ -1,5 +1,6 @@
-const { defineConfig } = require("eslint-define-config");
 const { camelCase, pascalCase } = require("change-case");
+const { defineConfig } = require("eslint-define-config");
+
 const cssPropertyGroups = require("./cssPropertyGroups");
 
 const cssPropertyOrderInJs = cssPropertyGroups
@@ -8,8 +9,8 @@ const cssPropertyOrderInJs = cssPropertyGroups
     val.startsWith(":")
       ? val
       : val.startsWith("-webkit-") || val.startsWith("-moz-")
-      ? pascalCase(val)
-      : camelCase(val),
+        ? pascalCase(val)
+        : camelCase(val),
   );
 
 const prettierConfig = {
@@ -41,34 +42,12 @@ module.exports = defineConfig({
   parser: "@typescript-eslint/parser",
   extends: [
     "plugin:react/recommended",
-    "plugin:perfectionist/recommended-natural",
+    "plugin:perfectionist/recommended-natural-legacy",
     "prettier",
   ],
   plugins: ["prettier", "perfectionist"],
   rules: {
     "prettier/prettier": ["error", prettierConfig, { usePrettierrc: false }],
-    "perfectionist/sort-imports": [
-      "error",
-      {
-        groups: [
-          "side-effect",
-          "type",
-          ["builtin", "external"],
-          "internal-type",
-          "internal",
-          ["parent-type", "sibling-type", "index-type"],
-          ["parent", "sibling", "index"],
-          "object",
-          "unknown",
-        ],
-        "custom-groups": {
-          value: {},
-          type: {},
-        },
-        "newlines-between": "always",
-        "internal-pattern": ["~/**", "@/**"],
-      },
-    ],
     "perfectionist/sort-objects": "off",
     "perfectionist/sort-object-types": "off",
   },
