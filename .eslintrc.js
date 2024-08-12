@@ -40,9 +40,9 @@ const packageJsonConfig = defineConfig({
 module.exports = defineConfig({
   parser: "@typescript-eslint/parser",
   extends: [
-    "react-app",
-    "prettier",
+    "plugin:react/recommended",
     "plugin:perfectionist/recommended-natural",
+    "prettier",
   ],
   plugins: ["prettier", "perfectionist"],
   rules: {
